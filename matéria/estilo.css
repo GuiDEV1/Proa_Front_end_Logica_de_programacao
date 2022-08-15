@@ -1,0 +1,41 @@
+body {
+/* background: url(img/bobo.gif) no-repeat center center;*/
+background: hsl(55, 70%, 85%);
+}
+
+thead {
+    background: #666666;
+    color: rgb(161, 76, 76);
+}
+
+h3 {
+ background: #666666;
+ text-align: center;
+}
+
+.paragrafo {
+    font-family: arial;
+    width: 50%;
+    background: rgb(118, 50, 50);
+         /*top right bottom left
+    margin:50px 15em 10px 20px;
+    */
+    margin: 3em auto;
+}
+
+#paragrafo {
+    background: rgb(118, 50, 50);
+    width: 50%;
+    margin: auto;
+}
+
+h1 {
+    margin: 10px auto;
+    border: 1px solid black;
+    width: 350px;
+    text-align: center;  
+}
+
+.test {
+    border: 1px dotted black;
+}
