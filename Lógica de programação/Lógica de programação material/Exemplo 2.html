@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumindo uma API utilizando FETCH - Método 1</title>
+</head>
+<body>
+    
+    <script>
+        // procurar saber mais sobre json e api, e api rest
+       // var x = ["Nome", "idade", funcao()] // Arrays são sequencias de elementos
+        var copo = {"tamanho": "grande", "altura": "alto", "cor": "marrom"}; // Objetos são sequencias de elementos
+      //  const nome = () => "Guilherme"; // Arrow Function
+        // Esse modelo utiliza o comando fetch e trabalha com promessas. 
+        fetch('https://jsonplaceholder.typicode.com/users') // fetch para consumir api
+        .then(response => {
+            return response.json();
+        })
+        .then(users => { // then segnifica e então que são promessas.
+            console.log('Abaixo o resultado do consumo da API')
+            console.log(users);
+
+            // Exemplo dos dados exibidos
+            document.write("Consumindo uma API utilizando FETCH - Método 1<br><br>")
+
+            document.write('<table border=1>')
+            document.write('<tr><td>Nome do Usuário</td><td> Telefone do usuário</td></tr>')
+            document.write('<tr>')
+                var contagem = 0;
+                while (contagem < 10) {
+            document.write('<tr>')        
+            document.write('<td>' + users[contagem].name + '</td>');
+            document.write('<td>' + users[contagem].phone + '</td>');
+            document.write('<td>' + users[contagem].website + '</td>');
+            document.write('<td>' + users[contagem].address["city"] + '</td>');
+            document.write('<tr>')
+            contagem++;
+        }
+            document.write('</tr>')
+            document.write('</table>')
+        })
+    </script>
+</body>
+</html>

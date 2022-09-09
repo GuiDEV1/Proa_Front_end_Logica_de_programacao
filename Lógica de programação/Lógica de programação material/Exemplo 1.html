@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumindo uma API utilizando XMLHttpRequest</title>
+</head>
+<body>
+    
+
+    <script>
+
+    
+        //Vamos começar nossa conversa criando um variável para ela. 
+        let request = new XMLHttpRequest();
+
+        // Começar a conversa com o site que queremos: 
+        request.open("GET", "https://jsonplaceholder.typicode.com/users");
+
+        // Enviar a mensagem de saudação 
+        request.send();
+
+        //Usando uma ArrowFunction para trabalhar os dados da conversa dentro de uma rotina. 
+        request.onload = () => {
+            console.log(request);
+
+            if (request.status == 200){ // o número 200 signifca que tudo funcionou corretamete. 
+                
+                console.log(JSON.parse(request.response));
+                var exemplo = JSON.parse(request.response);
+
+                // Exemplo dos dados exibidos
+                document.write("Exemplo de Consumo de APIs com Javascript utilizando XMLHttpRequest();<br><br>")
+                document.write('<table border="1">');
+                document.write('<tr><td>Nome do Usuário</td><td>Telefone do usuário</td><td>Telefone do usuário</td><td>Telefone do usuário</td></tr>');
+                document.write('<tr>');
+                document.write('<td>' + exemplo[7].name + '</td>');
+                document.write('<td>' + exemplo[7].phone + '</td>');
+                document.write('<td>' + exemplo[7].email + '</td>');
+                document.write('<td>' + exemplo[7].website + '</td>');
+                document.write('</tr>');
+                document.write('</table>');
+
+            } else if (request.status == 404) {
+                // O recurso não foi encontrado. 
+            } else {
+                console.log(`error ${request.status} ${request.statusText}`)   
+            }
+        }
+    </script>
+</body>
+</html>

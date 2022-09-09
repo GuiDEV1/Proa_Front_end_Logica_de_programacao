@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumindo uma API utilizando Axios</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    
+    <script>
+        // Esse modelo utiliza Axios e trabalha com promessas. 
+       axios.get('https://jsonplaceholder.typicode.com/users')
+       .then(response => {
+            console.log(response.data);
+
+            // Exemplo dos dados exibidos
+            document.write("Consumindo uma API utilizando Axios<br><br>")
+
+            document.write('<table border=1>')
+            document.write('<tr><td>Nome do Usuário</td><td> Telefone do usuário</td></tr>')
+            document.write('<tr>')
+            document.write('<td>' + response.data[9].name + '</td>')
+            document.write('<td>' + response.data[9].phone + '</td>')
+            document.write('</tr>')
+            document.write('</table>')
+       })
+       .catch(error => console.log(error));
+       //.catch(error => console.error(error));
+    </script>
+</body>
+</html>
