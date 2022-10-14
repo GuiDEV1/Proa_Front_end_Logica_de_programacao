@@ -5,6 +5,7 @@ não os hospedes.
 Autor: Guilherme M. Dias
 Data 16/09/2022
 versão 1.0
+*/
 
 
 var nomeHotel = prompt("Digite o nome do hotel: ");
@@ -75,7 +76,7 @@ function inicio () {
 
 }
 
-*/
+
 
 
 
