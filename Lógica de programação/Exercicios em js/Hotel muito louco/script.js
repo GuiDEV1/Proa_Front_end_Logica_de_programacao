@@ -529,8 +529,49 @@ function queHorasVocePode() {
 
 
 function alcoolOuGasolina(){
-  alert("okay!!!")
-  inicio();
+ var valAW = parseFloat(prompt('Qual o valor do álcool no posto Waine Oil?'));
+  var valGW = parseFloat(prompt('Qual o valor da gasolina no posto Waine Oil?'));
+  var melhorWaine = 0;
+  var r1 = (valGW * 30) / 100;
+  var resto = valGW - r1;
+  if(valAW <= resto){
+      melhorWaine = valAW;
+  }else{
+      melhorWaine = valGW;
+  }
+  var valAS = parseFloat(prompt('Qual o valor do álcool no posto Stark Petrol?'));
+  var valGS = parseFloat(prompt('Qual o valor da gasolina no posto Stark Petrol?'));
+  var melhorStark = 0;
+  var r2 = (valGS * 30) / 100;
+  var restos = valGS - r2;
+  if(valAS <= restos){
+      melhorStark = valAS;
+  }else{
+      melhorStark = valGS;
+  }
+  if(melhorStark > melhorWaine){
+      if(melhorWaine == valAW){
+          alert("O melhor é abastecer com álcool no posto Waine Oil.");
+          inicio();
+      }else{
+          alert("O melhor é abastecer com gasolina no posto Waine Oil.");
+          inicio();
+      }
+  }else if(melhorStark < melhorWaine){
+      if(melhorStark == valAS){
+          alert("O melhor é abastecer com álcool no posto Stark Petrol.");
+          inicio();
+      }else{
+          alert("O melhor é abastecer com gasolina no posto Stark Petrol.");
+          inicio();
+      }
+  }else if(melhorStark == melhorWaine){
+      alert("Os valores são iguais, ambos valem a pena.");
+      inicio();
+  }else{
+      alert("Algo saiu errado, tente novamente!");
+      abastecer_carros();
+  }
 }
 
 function arPuroFinalmente() {
