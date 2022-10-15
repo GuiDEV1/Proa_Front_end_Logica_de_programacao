@@ -534,8 +534,44 @@ function alcoolOuGasolina(){
 }
 
 function arPuroFinalmente() {
-  alert("okay!!!")
-  inicio();
+    var menor_valor_base = 19888867900;   // variável base para começar a atribuição de menor valor no If
+  var nome_empresa_menor = [];		// Array para armmazenar o nome da empresa de menor valor
+  var menor_valor = [];			// Array para armmazenar o menor valor de serviço da empresa.
+
+  do {
+    var nome_Empresa = prompt("Qual o nome da empresa?");
+    var valor_Aparelhos = parseFloat(prompt("Qual o valor por aparelho?"));
+    var quant_Aparelho = parseInt(prompt("Qual a quantidade de aparelhos?"));
+    var porcentagem_desc = parseInt(prompt("Qual a porcentagem de desconto?"));
+    var minimo_Aparelhos = parseInt(prompt("Qual o número mínimo de aparelhos para conseguir o desconto?"));
+    var total_Manutencao = valor_Aparelhos * quant_Aparelho;
+
+    if (minimo_Aparelhos <= quant_Aparelho) {
+      total_Manutencao -= total_Manutencao * (porcentagem_desc / 100);
+    }
+
+    window.alert(`O serviço da ${nome_Empresa} custará R$${total_Manutencao}`);  // informar o valor do serviço e nome da empresa inserida
+
+    // atribuição de menor valor de serviço
+    if (total_Manutencao < menor_valor_base) {
+      menor_valor_base = total_Manutencao; 		
+      nome_empresa_menor.push(nome_Empresa);		// insere dados no array
+      menor_valor.push(total_Manutencao);			
+    }
+    // FLAG - ponto de encerramento ou repetição do código
+    var novo_Cadastro = prompt(`Deseja informar novos dados, ${nameUser}? (S/N)`);
+
+
+    if (novo_Cadastro.toUpperCase() == "N") {
+      window.alert("O orçamento de menor valor é o " + nome_empresa_menor.slice(-1)[0] + " por " + menor_valor.slice(-1)[0]); // pegar o último valor do array. 
+      inicio();
+    }
+    else if (novo_Cadastro == Number || novo_Cadastro == "") {
+      novo_Cadastro = prompt("Valor inválido. Insira 'S' para continuar ou 'N' para encerrar: ");
+    }
+  } while (novo_Cadastro.toUpperCase() == "S") {			// repetir o código se a resposta for "S"
+
+  }
 }
 
 function erro() {
